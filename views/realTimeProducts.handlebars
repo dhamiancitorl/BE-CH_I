@@ -1,0 +1,52 @@
+<div class="container">
+  <h1>⚡ Productos en Tiempo Real</h1>
+
+  <div class="form-section">
+    <h2>➕ Agregar Producto</h2>
+    <form id="productForm">
+      <input type="text" id="title" placeholder="Título" required />
+      <input type="text" id="description" placeholder="Descripción" required />
+      <input type="text" id="code" placeholder="Código" required />
+      <input type="number" id="price" placeholder="Precio" required />
+      <input type="number" id="stock" placeholder="Stock" required />
+      <input type="text" id="category" placeholder="Categoría" required />
+      <button type="submit">Crear Producto</button>
+    </form>
+  </div>
+
+  <div class="form-section">
+    <h2>🗑️ Eliminar Producto</h2>
+    <form id="deleteForm">
+      <input
+        type="number"
+        id="deleteId"
+        placeholder="ID del producto"
+        required
+      />
+      <button type="submit">Eliminar Producto</button>
+    </form>
+  </div>
+
+  <h2>📋 Lista de Productos</h2>
+  <div id="productsContainer" class="products-grid">
+    {{#if products.length}}
+      {{#each products}}
+        <div class="product-card" data-id="{{this.id}}">
+          <span class="product-id">ID: {{this.id}}</span>
+          <h3>{{this.title}}</h3>
+          <p class="description">{{this.description}}</p>
+          <p class="price">${{this.price}}</p>
+          <div class="product-details">
+            <span class="badge">Stock: {{this.stock}}</span>
+            <span class="badge">Categoría: {{this.category}}</span>
+          </div>
+          <p class="code">Código: {{this.code}}</p>
+        </div>
+      {{/each}}
+    {{else}}
+      <p class="no-products">No hay productos disponibles</p>
+    {{/if}}
+  </div>
+</div>
+
+<script src="/js/realTimeProducts.js"></script>

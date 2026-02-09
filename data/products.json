@@ -1,0 +1,280 @@
+[
+  {
+    "id": 1,
+    "title": "Laptop HP Pavilion 15",
+    "description": "Laptop profesional con procesador Intel i7, 16GB RAM, 512GB SSD, pantalla Full HD de 15.6 pulgadas",
+    "code": "LAP-HP-001",
+    "price": 1299.99,
+    "status": true,
+    "stock": 15,
+    "category": "Computadoras",
+    "thumbnails": [
+      "/images/products/laptop-hp-1.jpg",
+      "/images/products/laptop-hp-2.jpg",
+      "/images/products/laptop-hp-3.jpg"
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Mouse Logitech MX Master 3",
+    "description": "Mouse inalámbrico ergonómico con sensor de alta precisión, batería recargable y conexión Bluetooth",
+    "code": "MOU-LOG-001",
+    "price": 89.99,
+    "status": true,
+    "stock": 50,
+    "category": "Accesorios",
+    "thumbnails": [
+      "/images/products/mouse-logitech-1.jpg",
+      "/images/products/mouse-logitech-2.jpg"
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Teclado Mecánico Corsair K95",
+    "description": "Teclado mecánico RGB con switches Cherry MX, reposamuñecas y teclas programables",
+    "code": "TEC-COR-001",
+    "price": 179.99,
+    "status": true,
+    "stock": 30,
+    "category": "Accesorios",
+    "thumbnails": [
+      "/images/products/teclado-corsair-1.jpg",
+      "/images/products/teclado-corsair-2.jpg",
+      "/images/products/teclado-corsair-3.jpg"
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Monitor Samsung 27\" 4K",
+    "description": "Monitor Ultra HD 4K de 27 pulgadas, panel IPS, HDR10, 60Hz, ideal para diseño y gaming",
+    "code": "MON-SAM-001",
+    "price": 449.99,
+    "status": true,
+    "stock": 20,
+    "category": "Monitores",
+    "thumbnails": [
+      "/images/products/monitor-samsung-1.jpg",
+      "/images/products/monitor-samsung-2.jpg"
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Auriculares Sony WH-1000XM5",
+    "description": "Auriculares inalámbricos con cancelación de ruido activa, 30 horas de batería, audio de alta resolución",
+    "code": "AUR-SON-001",
+    "price": 399.99,
+    "status": true,
+    "stock": 25,
+    "category": "Audio",
+    "thumbnails": [
+      "/images/products/auriculares-sony-1.jpg",
+      "/images/products/auriculares-sony-2.jpg",
+      "/images/products/auriculares-sony-3.jpg"
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Webcam Logitech C920",
+    "description": "Webcam Full HD 1080p con micrófono estéreo, ideal para videoconferencias y streaming",
+    "code": "WEB-LOG-001",
+    "price": 79.99,
+    "status": true,
+    "stock": 40,
+    "category": "Accesorios",
+    "thumbnails": [
+      "/images/products/webcam-logitech-1.jpg"
+    ]
+  },
+  {
+    "id": 7,
+    "title": "SSD Samsung 1TB NVMe",
+    "description": "Disco sólido interno M.2 NVMe, velocidades de lectura hasta 7000 MB/s, ideal para gaming",
+    "code": "SSD-SAM-001",
+    "price": 129.99,
+    "status": true,
+    "stock": 60,
+    "category": "Almacenamiento",
+    "thumbnails": [
+      "/images/products/ssd-samsung-1.jpg",
+      "/images/products/ssd-samsung-2.jpg"
+    ]
+  },
+  {
+    "id": 8,
+    "title": "Impresora HP LaserJet Pro",
+    "description": "Impresora láser monocromática, WiFi, impresión dúplex automática, 40 ppm",
+    "code": "IMP-HP-001",
+    "price": 249.99,
+    "status": true,
+    "stock": 12,
+    "category": "Impresoras",
+    "thumbnails": [
+      "/images/products/impresora-hp-1.jpg"
+    ]
+  },
+  {
+    "id": 9,
+    "title": "Router TP-Link AX3000",
+    "description": "Router WiFi 6 de doble banda, velocidades hasta 3 Gbps, cobertura para casas grandes",
+    "code": "ROU-TPL-001",
+    "price": 149.99,
+    "status": true,
+    "stock": 35,
+    "category": "Redes",
+    "thumbnails": [
+      "/images/products/router-tplink-1.jpg",
+      "/images/products/router-tplink-2.jpg"
+    ]
+  },
+  {
+    "id": 10,
+    "title": "Tablet iPad Air 256GB",
+    "description": "Tablet Apple con chip M1, pantalla Liquid Retina de 10.9\", compatible con Apple Pencil",
+    "code": "TAB-APP-001",
+    "price": 749.99,
+    "status": true,
+    "stock": 18,
+    "category": "Tablets",
+    "thumbnails": [
+      "/images/products/ipad-air-1.jpg",
+      "/images/products/ipad-air-2.jpg",
+      "/images/products/ipad-air-3.jpg"
+    ]
+  },
+  {
+    "id": 11,
+    "title": "Silla Gamer DXRacer Formula",
+    "description": "Silla ergonómica para gaming con soporte lumbar, reposabrazos ajustables, reclinable 180°",
+    "code": "SIL-DXR-001",
+    "price": 329.99,
+    "status": true,
+    "stock": 10,
+    "category": "Muebles",
+    "thumbnails": [
+      "/images/products/silla-dxracer-1.jpg",
+      "/images/products/silla-dxracer-2.jpg"
+    ]
+  },
+  {
+    "id": 12,
+    "title": "Micrófono Blue Yeti USB",
+    "description": "Micrófono condensador USB profesional, múltiples patrones de captación, ideal para streaming",
+    "code": "MIC-BLU-001",
+    "price": 129.99,
+    "status": true,
+    "stock": 28,
+    "category": "Audio",
+    "thumbnails": [
+      "/images/products/microfono-yeti-1.jpg"
+    ]
+  },
+  {
+    "id": 13,
+    "title": "Disco Duro Externo 2TB",
+    "description": "Disco duro portátil USB 3.0, 2TB de capacidad, diseño compacto y resistente",
+    "code": "HDD-SEA-001",
+    "price": 79.99,
+    "status": false,
+    "stock": 0,
+    "category": "Almacenamiento",
+    "thumbnails": [
+      "/images/products/hdd-externo-1.jpg"
+    ]
+  },
+  {
+    "id": 14,
+    "title": "Switch Nintendo OLED",
+    "description": "Consola híbrida con pantalla OLED de 7\", 64GB de almacenamiento interno, Joy-Con incluidos",
+    "code": "CON-NIN-001",
+    "price": 349.99,
+    "status": true,
+    "stock": 22,
+    "category": "Gaming",
+    "thumbnails": [
+      "/images/products/switch-oled-1.jpg",
+      "/images/products/switch-oled-2.jpg",
+      "/images/products/switch-oled-3.jpg"
+    ]
+  },
+  {
+    "id": 15,
+    "title": "Cámara Canon EOS R6",
+    "description": "Cámara mirrorless full frame, 20.1 MP, video 4K, estabilización de imagen de 5 ejes",
+    "code": "CAM-CAN-001",
+    "price": 2499.99,
+    "status": true,
+    "stock": 5,
+    "category": "Fotografía",
+    "thumbnails": [
+      "/images/products/canon-r6-1.jpg",
+      "/images/products/canon-r6-2.jpg"
+    ]
+  },
+  {
+    "id": 16,
+    "title": "Hub USB-C 7 en 1",
+    "description": "Adaptador multipuerto con HDMI 4K, USB 3.0, lector SD/TF, carga PD de 100W",
+    "code": "HUB-ANK-001",
+    "price": 49.99,
+    "status": true,
+    "stock": 45,
+    "category": "Accesorios",
+    "thumbnails": [
+      "/images/products/hub-usbc-1.jpg"
+    ]
+  },
+  {
+    "id": 17,
+    "title": "Smart Watch Samsung Galaxy Watch 5",
+    "description": "Reloj inteligente con GPS, monitor de frecuencia cardíaca, resistente al agua, batería 40h",
+    "code": "WAT-SAM-001",
+    "price": 279.99,
+    "status": true,
+    "stock": 32,
+    "category": "Wearables",
+    "thumbnails": [
+      "/images/products/galaxy-watch-1.jpg",
+      "/images/products/galaxy-watch-2.jpg"
+    ]
+  },
+  {
+    "id": 18,
+    "title": "Parlante Bluetooth JBL Charge 5",
+    "description": "Altavoz portátil resistente al agua IP67, 20 horas de batería, sonido potente con graves profundos",
+    "code": "PAR-JBL-001",
+    "price": 179.99,
+    "status": true,
+    "stock": 38,
+    "category": "Audio",
+    "thumbnails": [
+      "/images/products/jbl-charge-1.jpg"
+    ]
+  },
+  {
+    "id": 19,
+    "title": "Estabilizador DJI Osmo Mobile 6",
+    "description": "Gimbal para smartphone con seguimiento inteligente, batería 6.4h, plegable y portátil",
+    "code": "GIM-DJI-001",
+    "price": 149.99,
+    "status": true,
+    "stock": 15,
+    "category": "Fotografía",
+    "thumbnails": [
+      "/images/products/dji-osmo-1.jpg",
+      "/images/products/dji-osmo-2.jpg"
+    ]
+  },
+  {
+    "id": 20,
+    "title": "Kit Iluminación LED Ring Light",
+    "description": "Aro de luz LED 18\" con trípode ajustable, control remoto Bluetooth, 3 modos de color",
+    "code": "LUZ-NEE-001",
+    "price": 89.99,
+    "status": true,
+    "stock": 27,
+    "category": "Fotografía",
+    "thumbnails": [
+      "/images/products/ring-light-1.jpg"
+    ]
+  }
+]

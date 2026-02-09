@@ -1,0 +1,25 @@
+<div class="container">
+    <h1>📦 Lista de Productos</h1>
+    
+    {{#if products.length}}
+        <div class="products-grid">
+            {{#each products}}
+                <div class="product-card">
+                    <h3>{{this.title}}</h3>
+                    <p class="description">{{this.description}}</p>
+                    <p class="price">${{this.price}}</p>
+                    <div class="product-details">
+                        <span class="badge">Stock: {{this.stock}}</span>
+                        <span class="badge">Categoría: {{this.category}}</span>
+                        <span class="badge {{#if this.status}}active{{else}}inactive{{/if}}">
+                            {{#if this.status}}Disponible{{else}}No disponible{{/if}}
+                        </span>
+                    </div>
+                    <p class="code">Código: {{this.code}}</p>
+                </div>
+            {{/each}}
+        </div>
+    {{else}}
+        <p class="no-products">No hay productos disponibles</p>
+    {{/if}}
+</div>
