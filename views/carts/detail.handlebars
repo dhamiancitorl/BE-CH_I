@@ -1,0 +1,35 @@
+<div class="container">
+  {{#if error}}
+    <p>{{error}}</p>
+    <a href="/products">Ir a productos</a>
+  {{else}}
+    <h1>Carrito</h1>
+
+    {{#if cart.products.length}}
+      <ul style="list-style: none; padding: 0;">
+        {{#each cart.products}}
+          <li
+            style="border: 1px solid #ddd; padding: 1rem; margin-bottom: 0.5rem;"
+          >
+            <strong>{{this.product.title}}</strong>
+            <br />
+            <span>${{this.product.price}} × {{this.quantity}}</span>
+          </li>
+        {{/each}}
+      </ul>
+    {{else}}
+      <p>El carrito está vacío.</p>
+    {{/if}}
+
+    <p style="margin-top: 1rem;"><a href="/products?cartId={{cart._id}}">Seguir
+        comprando</a>
+      <form
+        method="POST"
+        action="/carts/{{cart._id}}/clear"
+        style="display:inline;"
+      >
+        <button type="submit">Vaciar carrito</button>
+      </form>
+    </p>
+  {{/if}}
+</div>

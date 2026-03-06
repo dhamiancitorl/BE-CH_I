@@ -2,24 +2,51 @@ import { Router } from "express";
 import ProductManager from "../ProductManager.js";
 
 const router = Router();
-const productManager = new ProductManager("./data/products.json");
+const productManager = new ProductManager();
 
 // GET all products
 router.get("/", async (req, res) => {
   try {
-    const { limit } = req.query;
-    const products = await productManager.getProducts();
+    const limit = Math.max(1, parseInt(req.query.limit || 10));
+    const page = Math.max(1, parseInt(req.query.page || 1));
+    const query = req.query.query || "";
+    const sort = req.query.sort || "";
+    const productsData = await productManager.getProductsPaginated({
+      limit,
+      page,
+      query,
+      sort,
+    });
 
-    if (limit) {
-      return res.json({
-        status: "success",
-        payload: products.slice(0, parseInt(limit)),
-      });
-    }
+    const { products, totalDocs } = productsData;
+
+    // paginacion
+    const totalPages = Math.ceil(totalDocs / limit) || 1;
+    const hasPrevPage = page > 1;
+    const hasNextPage = page < totalPages;
+    const prevPage = hasPrevPage ? page - 1 : null;
+    const nextPage = hasNextPage ? page + 1 : null;
+
+    // links
+    const baseUrl = `${req.protocol}://${req.get("host")}/api/products`;
+    const prevLink = hasPrevPage
+      ? `${baseUrl}?${new URLSearchParams({ ...req.query, page: page - 1 }).toString()}`
+      : null;
+    const nextLink = hasNextPage
+      ? `${baseUrl}?${new URLSearchParams({ ...req.query, page: page + 1 }).toString()}`
+      : null;
 
     res.json({
       status: "success",
       payload: products,
+      totalPages,
+      prevPage,
+      nextPage,
+      page,
+      hasPrevPage,
+      hasNextPage,
+      prevLink,
+      nextLink,
     });
   } catch (error) {
     res.status(500).json({
@@ -55,11 +82,11 @@ router.post("/", async (req, res) => {
 router.delete("/:pid", async (req, res) => {
   try {
     const { pid } = req.params;
-    await productManager.deleteProduct(parseInt(pid));
+    await productManager.deleteProduct(pid);
 
     // NUEVO: Emitir evento de WebSocket
     if (req.io) {
-      req.io.emit("productDeleted", parseInt(pid));
+      req.io.emit("productDeleted", pid);
     }
 
     res.json({
@@ -78,7 +105,7 @@ router.delete("/:pid", async (req, res) => {
 router.get("/:pid", async (req, res) => {
   try {
     const { pid } = req.params;
-    const product = await productManager.getProductById(parseInt(pid));
+    const product = await productManager.getProductById(pid);
     res.json({
       status: "success",
       payload: product,
@@ -95,10 +122,7 @@ router.get("/:pid", async (req, res) => {
 router.put("/:pid", async (req, res) => {
   try {
     const { pid } = req.params;
-    const updatedProduct = await productManager.updateProduct(
-      parseInt(pid),
-      req.body,
-    );
+    const updatedProduct = await productManager.updateProduct(pid, req.body);
     res.json({
       status: "success",
       payload: updatedProduct,

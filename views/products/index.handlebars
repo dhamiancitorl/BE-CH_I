@@ -1,0 +1,41 @@
+<div class="container">
+  <h1>Productos</h1>
+
+  {{#if error}}
+    <p>{{error}}</p>
+  {{else}}
+    {{#if products.length}}
+      <div class="products-grid">
+        {{#each products}}
+          <div class="product-card">
+            <h3>{{this.title}}</h3>
+            <p>${{this.price}}</p>
+<a href="/products/{{this._id}}{{#if ../cartId}}?cartId={{../cartId}}{{/if}}">Ver detalle</a>
+            {{#if ../cartId}}
+              <a href="/carts/{{../cartId}}/remove/{{this._id}}" style="display:inline;">Eliminar del carrito</a>
+            {{/if}}
+            {{#if ../cartId}}
+              <form method="POST" action="/carts/{{../cartId}}/add/{{this._id}}" style="display:inline;">
+                <button type="submit">Agregar al carrito</button>
+              </form>
+            {{/if}}
+          </div>
+        {{/each}}
+      </div>
+
+      {{#if totalPages}}
+        <div style="margin-top: 1.5rem;">
+          <p>Página {{page}} de {{totalPages}}</p>
+          {{#if hasPrevPage}}
+            <a href="{{prevLink}}">Anterior</a>
+          {{/if}}
+          {{#if hasNextPage}}
+            <a href="{{nextLink}}">Siguiente</a>
+          {{/if}}
+        </div>
+      {{/if}}
+    {{else}}
+      <p>No hay productos disponibles.</p>
+    {{/if}}
+  {{/if}}
+</div>

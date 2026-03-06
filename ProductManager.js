@@ -1,30 +1,6 @@
-import fs from "fs/promises";
+import { ProductModel } from "./src/models/Products.js";
 
 class ProductManager {
-  constructor(filePath) {
-    this.path = filePath;
-    this.products = [];
-    this.init();
-  }
-
-  async init() {
-    try {
-      await this.loadProducts();
-    } catch (error) {
-      // Si el archivo no existe, creamos uno vacío
-      await this.saveProducts();
-    }
-  }
-
-  async loadProducts() {
-    const data = await fs.readFile(this.path, "utf-8");
-    this.products = JSON.parse(data);
-  }
-
-  async saveProducts() {
-    await fs.writeFile(this.path, JSON.stringify(this.products, null, 2));
-  }
-
   async addProduct(productData) {
     const {
       title,
@@ -50,17 +26,12 @@ class ProductManager {
     }
 
     // Verificar si el código ya existe
-    if (this.products.find((pr) => pr.code === code)) {
+    if (await ProductModel.findOne({ code })) {
       throw new Error("El código ya está en uso");
     }
 
     // Generar ID
-    let id;
-    if (this.products.length === 0) {
-      id = 1;
-    } else {
-      id = this.products[this.products.length - 1].id + 1;
-    }
+    const id = (await ProductModel.countDocuments()) + 1;
 
     // Crear el producto
     const newProduct = {
@@ -75,55 +46,57 @@ class ProductManager {
       thumbnails: thumbnails || [],
     };
 
-    this.products.push(newProduct);
-    await this.saveProducts();
-
+    await ProductModel.create(newProduct);
     return newProduct;
   }
 
   async getProducts() {
-    await this.loadProducts();
-    return this.products;
+    const products = await ProductModel.find().lean();
+    return products;
+  }
+
+  async getProductsPaginated(options = {}) {
+    const { limit = 10, page = 1, query: queryParam, sort } = options;
+
+    // 1 por filtro
+    const filter = {};
+    if (queryParam) {
+      filter.title = { $regex: queryParam, $options: "i" };
+    }
+    // 2 por sort
+    let sortOption = {};
+    if (sort === "asc") sortOption.price = 1;
+    if (sort === "desc") sortOption.price = -1;
+
+    // 3 page
+    const totalDocs = await ProductModel.countDocuments(filter);
+
+    // 4 pagina pedida
+    const skip = (page - 1) * limit;
+    const products = await ProductModel.find(filter)
+      .sort(sortOption)
+      .skip(skip)
+      .limit(limit)
+      .lean();
+
+    return { products, totalDocs };
   }
 
   async getProductById(pid) {
-    await this.loadProducts();
-    const product = this.products.find((pr) => pr.id === parseInt(pid));
+    const product = await ProductModel.findById(pid).lean();
     return product || null;
   }
 
   async updateProduct(pid, updateData) {
-    await this.loadProducts();
-    const index = this.products.findIndex((pr) => pr.id === parseInt(pid));
-
-    if (index === -1) {
-      return null;
-    }
-
-    // No permitir actualizar el id
-    const { id, ...fieldsToUpdate } = updateData;
-
-    // Actualizar solo los campos proporcionados
-    this.products[index] = {
-      ...this.products[index],
-      ...fieldsToUpdate,
-    };
-
-    await this.saveProducts();
-    return this.products[index];
+    const product = await ProductModel.findByIdAndUpdate(pid, updateData, {
+      new: true,
+    });
+    return product || null;
   }
 
   async deleteProduct(pid) {
-    await this.loadProducts();
-    const index = this.products.findIndex((pr) => pr.id === parseInt(pid));
-
-    if (index === -1) {
-      return false;
-    }
-
-    this.products.splice(index, 1);
-    await this.saveProducts();
-    return true;
+    const result = await ProductModel.findByIdAndDelete(pid);
+    return result || null;
   }
 }
 

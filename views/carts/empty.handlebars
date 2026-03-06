@@ -1,0 +1,27 @@
+<div class="container">
+  <h1>Carritos</h1>
+
+  {{#if carts.length}}
+    <p>Elegí un carrito o creá uno nuevo:</p>
+    <ul>
+      {{#each carts}}
+        <li>
+          <a href="/carts/{{this._id}}">Carrito {{this._id}}</a>
+          {{#if this.products.length}}
+            —
+            {{this.products.length}}
+            producto(s)
+          {{else}}
+            — Vacío
+          {{/if}}
+        </li>
+      {{/each}}
+    </ul>
+  {{else}}
+    <p>No tenés carritos. Creá uno para empezar.</p>
+  {{/if}}
+
+  <form method="POST" action="/carts" style="margin-top: 1rem;">
+    <button type="submit">Crear carrito</button>
+  </form>
+</div>

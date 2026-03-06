@@ -1,0 +1,35 @@
+<div class="container">
+  {{#if error}}
+    <p>{{error}}</p>
+    <a href="/products">Volver a productos</a>
+  {{else}}
+    <h1>{{product.title}}</h1>
+    <p>{{product.description}}</p>
+    <p><strong>Precio:</strong> ${{product.price}}</p>
+    <p><strong>Categoría:</strong> {{product.category}}</p>
+    <p><strong>Stock:</strong> {{product.stock}}</p>
+    <p><strong>Código:</strong> {{product.code}}</p>
+    <p><strong>Estado:</strong>
+      {{#if product.status}}Disponible{{else}}No disponible{{/if}}</p>
+    {{#if product.thumbnails.length}}
+      <p><strong>Imágenes:</strong></p>
+      <ul>
+        {{#each product.thumbnails}}
+          <li><img src="{{this}}" alt="" style="max-width: 120px;" /></li>
+        {{/each}}
+      </ul>
+    {{/if}}
+
+    {{#if cartId}}
+      <form
+        method="POST"
+        action="/carts/{{cartId}}/add/{{product._id}}"
+        style="display:inline; margin-top: 1rem;"
+      >
+        <button type="submit">Agregar al carrito</button>
+        <a href="/carts/{{cartId}}">Ver mi carrito</a>
+      </form>
+    {{/if}}
+    <p style="margin-top: 1rem;"><a href="/products">Volver a productos</a></p>
+  {{/if}}
+</div>

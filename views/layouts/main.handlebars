@@ -10,6 +10,11 @@
     <nav>
       <a href="/">Home</a>
       <a href="/realtimeproducts">Productos en Tiempo Real</a>
+      <a href="/products">Productos</a>
+      <a href="/carts">Lista de carritos</a>
+      {{#if cartId}}
+        <a href="/carts/{{cartId}}">Carrito</a>
+      {{/if}}
     </nav>
 
     <main>
