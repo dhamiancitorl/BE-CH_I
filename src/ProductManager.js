@@ -1,4 +1,4 @@
-import { ProductModel } from "./src/models/Products.js";
+import { ProductModel } from "./models/Products.js";
 
 class ProductManager {
   async addProduct(productData) {

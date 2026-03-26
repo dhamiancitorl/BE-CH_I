@@ -4,7 +4,7 @@ import { Server } from "socket.io";
 import { createServer } from "http";
 import path from "path";
 import { fileURLToPath } from "url";
-import { mongoConnect } from "./src/config/database.js";
+import { mongoConnect } from "./config/database.js";
 // Routers
 import productsRouter from "./routes/products.router.js";
 import cartsRouter from "./routes/carts.router.js";
